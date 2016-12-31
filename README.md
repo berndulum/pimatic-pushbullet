@@ -12,10 +12,13 @@ You can load the backend by editing your `config.json` to include:
       "apikey": "xxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
 
-in the `plugins` section. You can indicate which Device or Channel should be pushed to. For all configuration options see 
-[pushbullet-config-schema](pushbullet-config-schema.coffee)
+in the `plugins` section. You can indicate which Device or E-Mail or Channel should be pushed to. For all configuration options see [pushbullet-config-schema](pushbullet-config-schema.coffee)
 
-Currently you can send pushbullet notifications via action handler within rules.
+Currently you can send pushbullet notifications via action handler within rules:
+
+    if X then push title:"title of the push notification" message:"message for the notification" type:"note|file" channel:"channeltag" (email|device):"device or email"
+
+The channel setting will overwrite the device setting.
 
 Example:
 --------
@@ -31,6 +34,10 @@ if you want to send a file or note to a specific channel you can add channel to 
 
     if it is 8:00 push title:"Good morning!" message:"Good morning to all of you" channel:"my_flatmates"
 
-in general:
+if you want to send a note to a specific device:
 
-    if X then push title: "title of the push notification" message: "message for the notification" type: "note|file"
+    if it is 8:00 push message:"Good morning to all of you" device:"your_device"
+
+if you want to send a note to another pushbullet user:
+
+    if it is 8:00 push message:"Good morning to all of you" email:"another.user@gmail.com"

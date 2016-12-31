@@ -7,7 +7,7 @@ module.exports = {
       type: "string"
       required: yes
     device:
-      description:"device to send the notification to"
+      description:"device to send the notification to (can also be the email of another pushbullet user)"
       type: "string"
       default: ""
     title:
@@ -23,7 +23,7 @@ module.exports = {
       type: "string"
       default: "note"
     channeltag:
-      description:"channeltag to send the notification to"
+      description:"channeltag to send the notification to. This will overwrite the device."
       type: "string"
       default: ""
 }
